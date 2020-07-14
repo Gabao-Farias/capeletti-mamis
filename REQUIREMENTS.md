@@ -1,6 +1,6 @@
 # Requirements
 ## Abstract
-It's an app for users administrate their money, through mapping.
+It's an app for users administrate their money, through cash flow mapping.
 
 ## Functionalities
 
