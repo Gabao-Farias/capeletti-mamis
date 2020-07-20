@@ -1,38 +1,57 @@
 import React, {Component} from 'react';
-import {View, StyleSheet, Text, Button} from 'react-native';
+import { Keyboard, ScrollView } from 'react-native';
+
+import {Container, Title, Inputs, InputClientName, InputType, InputFlavor, InputSize, InputValue, Options, Add, Back, AddText, BackText} from './styles';
+
+
 
 export default class NewRegister extends Component {
+
     render(){
         return(
-            <>
-                <View style={styles.container}>
-                    <Text style={styles.text}>New Register</Text>
-                    <View style={styles.box} />
-                    <Button title="Home" onPress={() => this.props.navigation.navigate("Main")}/>
-                </View>
-            </>
+                <Container>
+                    <ScrollView
+                        keyboardShouldPersistTaps="handled"
+                    >
+                        <Title>Novo Pedido</Title>
+                        <Inputs>
+                            <InputClientName
+                                autoCapitalize={'words'}
+                                autoCorrect={false}
+                                placeholder={'Nome do cliente'}
+                            />
+                            <InputType
+                                autoCapitalize={'words'}
+                                autoCorrect={false}
+                                placeholder={'Tipo'}
+                            />
+                            <InputFlavor
+                                autoCapitalize={'words'}
+                                autoCorrect={false}
+                                placeholder={'Sabor'}
+                            />
+                            <InputSize
+                                autoCapitalize={'words'}
+                                autoCorrect={false}
+                                placeholder={'Tamanho'}
+                            />
+                            <InputValue
+                                autoCapitalize={'words'}
+                                autoCorrect={false}
+                                placeholder={'Valor (R$)'}
+                                keyboardType={'numeric'}
+                            />
+                        </Inputs>
+                        <Options>
+                            <Back onPress={() => {this.props.navigation.navigate('Main')}}>
+                                <BackText>Voltar</BackText>
+                            </Back>
+                            <Add onPress={() => {}}>
+                                <AddText>Adicionar</AddText>
+                            </Add>
+                        </Options>
+                    </ScrollView>
+                </Container>
         );
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: "#222",
-    },
-
-    text:{
-        fontSize: 18,
-        color: "#ddd",
-    },
-
-    box:{
-        width: 100,
-        height: 100,
-        backgroundColor: "#999",
-        borderRadius: 20,
-        margin: 10,
-    }
-})
