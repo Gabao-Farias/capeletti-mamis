@@ -7,7 +7,7 @@ export default function getNewID(objects){
     let j = 0;
 
     while(j < objects.length){
-        i=0;
+        i = 0;
         flag = false;
         while(i < objects.length && flag === false){
             if(newID === objects[i].id){
