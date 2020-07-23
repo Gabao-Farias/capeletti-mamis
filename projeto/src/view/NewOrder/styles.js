@@ -20,9 +20,9 @@ export const Inputs = styled.View`
     padding: 20px;
 `;
 
-export const InputClientName = styled.TextInput.attrs({
+export const InputCostumerName = styled.TextInput.attrs({
     placeholderTextColor: "#aaa",
-})`    
+})`
     background-color: #fff;
     padding-left: 20px;
     padding-right: 20px;

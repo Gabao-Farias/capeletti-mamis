@@ -9,7 +9,7 @@ export default class OrderSchema{
             flavor: 'string',
             size: 'string',
             value: 'double',
-            data: 'date',
+            date: 'date',
         }
     }
 }

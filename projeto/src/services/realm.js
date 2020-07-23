@@ -1,16 +1,10 @@
 import Realm from 'realm';
 
-import OrderSchema from '../schemas/OrderSchema';
-import SpentSchema from '../schemas/SpentSchema';
+import OrderSchema from '../model/schemas/OrderSchema';
+import SpentSchema from '../model/schemas/SpentSchema';
 
-function getRealmOrder(){
+export default function getRealm(){
     return Realm.open({
-        schema: [OrderSchema],
-    })
-}
-
-function getRealmOrder(){
-    return Realm.open({
-        schema: [SpentSchema],
-    })
+        schema: [OrderSchema, SpentSchema],
+    });
 }
