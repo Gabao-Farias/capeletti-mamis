@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { ScrollView,  Alert } from 'react-native';
 
 import getRealm from '../../services/realm';
-import getNewID from '../../services/IDPovider';
+import getNewID from '../../services/IDProvider';
 
 import {Container, Title, Inputs, InputCostumerName, InputType, InputFlavor, InputSize, InputValue, Options, Add, Back, AddText, BackText} from './styles';
 
@@ -14,7 +14,7 @@ export default class NewOrder extends Component {
         flavor: '',
         size: '',
         value: '',
-        date: new Date,
+        date: '',
     }
 
     generateAlert(title, message){
@@ -38,7 +38,7 @@ export default class NewOrder extends Component {
                 flavor: order.flavor,
                 size: order.size,
                 value: Number(order.value),
-                date: order.date,
+                date: new Date,
             };
 
             const realm = await getRealm();
@@ -48,6 +48,8 @@ export default class NewOrder extends Component {
             realm.write(() => {
                 realm.create('Order', data);
             });
+
+            this.generateAlert("Concluído", "Pedido realizado com sucesso");
 
         }catch(err){
             console.log("Error on saving data");
@@ -65,12 +67,10 @@ export default class NewOrder extends Component {
                 flavor: '',
                 size: '',
                 value: '',
-                date: new Date,
+                date: '',
             });
 
             this.defineNewID();
-
-            this.generateAlert("Concluído", "Pedido realizado com sucesso");
 
         }catch(err){
             console.log("Error on saving data");
