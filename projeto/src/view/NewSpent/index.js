@@ -64,7 +64,6 @@ export default class NewSpent extends Component {
 
     componentDidMount(){
         this.defineNewID();
-        console.log(this.state.id);
     }
 
     render(){
