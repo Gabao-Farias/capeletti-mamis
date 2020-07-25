@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Alert } from 'react-native';
 
 import getRealm from '../../services/realm';
-import getNewIDCostumers from '../../services/IDProvider';
+import getNewIDCostumers from '../../services/IDProviderCostumers';
+import costumerExists from '../../services/CostumerExists';
 
 import {Container, Title, Inputs, InputText, Options, Back, BackText, Add, AddText} from './styles';
 
@@ -11,6 +12,7 @@ export default class NewCostumer extends Component {
     state = {
         costumerID: 0,
         name: "",
+        costumers: [],
     };
 
     generateAlert(title, message){
@@ -23,7 +25,7 @@ export default class NewCostumer extends Component {
 
             const objects = realm.objects('Costumer');
 
-            this.setState({costumerID: Number(getNewIDCostumers(objects))})
+            this.setState({costumerID: Number(getNewIDCostumers(objects))});
         }catch(err){
             this.generateAlert("Erro", "Problema ao gerar um novo ID!");
         }
@@ -46,21 +48,39 @@ export default class NewCostumer extends Component {
 
         }catch(err){
             this.generateAlert("Erro", "Problema ao salvar cliente!")
+            console.log(err);
         }
     }
 
     handleAddCostumer(){
-        this.saveCostumer(this.state);
+        if(!costumerExists(this.state.name, this.state.costumers)){
+            this.saveCostumer(this.state);
 
-        this.setState({
-            costumerID: 0,
-            name: ''
-        });
+            this.setState({
+                costumerID: 0,
+                name: ''
+            });
 
-        this.defineNewID();
+            this.defineNewID();
+        }else{
+
+        }
+    }
+
+    async loadExistentCostumers(){
+        try{
+            const realm = await getRealm();
+
+            const data = realm.objects('Costumer');
+
+            this.setState({costumers: data});
+        }catch(err){
+            this.generateAlert("Erro", "Não foi possível estabelecer conexão com o banco de dados!");
+        }
     }
 
     componentDidMount(){
+        this.loadExistentCostumers();
         this.defineNewID();
     }
 

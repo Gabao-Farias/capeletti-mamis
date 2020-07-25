@@ -1,6 +1,6 @@
 // Realm doesn't support auto-increment, so I needed to implement this by myself
 
-export default function getNewID(objects){
+export default function getNewIDCostumers(objects){
     let newID = 0;
     let flag = false;
     let i = 0;
@@ -16,7 +16,7 @@ export default function getNewID(objects){
             i++;
         }
 
-        if(flag === false){
+        if(flag === false){            
             return(newID);
         }
 
