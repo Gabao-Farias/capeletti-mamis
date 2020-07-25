@@ -5,7 +5,7 @@ export default class OrderSchema{
         properties: {
             id: {type: 'int', indexed: true},
             costumerID: {type: 'int', indexed: true},
-            clientName: 'string',
+            costumerName: 'string',
             type: 'string',
             flavor: 'string',
             size: 'string',

@@ -31,7 +31,7 @@ export default class NewOrder extends Component {
 
     async saveOrder(order){
         try{
-            const data = {
+            const data = { //FIX IT
                 id: order.id,
                 clientName: order.clientName,
                 type: order.type,
@@ -60,7 +60,7 @@ export default class NewOrder extends Component {
         try{
             this.saveOrder(this.state);
 
-            this.setState({
+            this.setState({//FIX IT
                 id: 0,
                 clientName: '',
                 type: '',
