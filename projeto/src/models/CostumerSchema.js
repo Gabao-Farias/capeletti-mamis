@@ -3,7 +3,7 @@ export default class CostumerSchema{
         name: 'Costumer',
         primaryKey: 'id',
         properties: {
-            id: {type: 'int', indexed: true},
+            costumerID: {type: 'int', indexed: true},
             name: 'string',
             orders: 'Order[]',
             contact: 'Contact',
