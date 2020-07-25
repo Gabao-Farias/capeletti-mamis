@@ -9,9 +9,10 @@ export default class OrderSchema{
             type: 'string',
             flavor: 'string',
             size: 'string',
+            ammount: 'int',
             value: 'double',
-            date: 'date',
-            delivered: 'bool'
+            delivered: 'bool',
+            deliveredDate: 'date'
         }
     }
 }

@@ -1,7 +1,7 @@
 import Realm from 'realm';
 
-import OrderSchema from '../model/schemas/OrderSchema';
-import SpentSchema from '../model/schemas/SpentSchema';
+import OrderSchema from '../models/OrderSchema';
+import SpentSchema from '../models/SpentSchema';
 
 export default function getRealm(){
     return Realm.open({
