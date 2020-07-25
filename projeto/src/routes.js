@@ -12,7 +12,7 @@ const Stack = createStackNavigator();
 export default function Routes() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="NewCostumer" headerMode="none">
+      <Stack.Navigator initialRouteName="Main" headerMode="none">
         <Stack.Screen name="Main" component={Main} />
         <Stack.Screen name="NewOrder" component={NewOrder} />
         <Stack.Screen name="NewSpent" component={NewSpent} />

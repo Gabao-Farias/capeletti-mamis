@@ -10,7 +10,7 @@ export const Container = styled(LinearGradient).attrs({
     justify-content: center;
 `;
 
-export const NewOrder = styled.TouchableOpacity`
+export const Button = styled.TouchableOpacity`
     flex-direction: row;
     align-self: center;
     border-radius: 20px;
@@ -21,23 +21,7 @@ export const NewOrder = styled.TouchableOpacity`
     background-color: #fff;
 `;
 
-export const NewSpent = styled.TouchableOpacity`
-    flex-direction: row;
-    align-self: center;
-    border-radius: 20px;
-    padding: 20px;
-    padding-left: 50px;
-    padding-right: 50px;
-    background-color: #fff;
-`;
-
-export const OrderText = styled.Text`
-    font-size: 20px;
-    font-weight: bold;
-    color: #72075F;
-`;
-
-export const SpentText = styled.Text`
+export const Text = styled.Text`
     font-size: 20px;
     font-weight: bold;
     color: #72075F;
