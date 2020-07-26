@@ -11,6 +11,7 @@ export default class OrderSchema{
             size: 'string',
             ammount: 'int',
             value: 'double',
+            deliverDate: 'date',
             delivered: 'bool',
             deliveredDate: 'date'
         }
