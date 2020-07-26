@@ -1,18 +1,21 @@
 import React, {Component} from 'react';
 
-import { Container, NewOrder, NewSpent, OrderText, SpentText } from './styles';
+import { Container, Button, Text } from './styles';
 
 export default class Main extends Component {
 
     render(){
         return(
             <Container>
-                <NewOrder onPress={() => {this.props.navigation.navigate('NewOrder')}}>
-                    <OrderText>Novo Pedido</OrderText>
-                </NewOrder>
-                <NewSpent onPress={() => {this.props.navigation.navigate('NewSpent')}}>
-                    <SpentText>Novo Gasto</SpentText>
-                </NewSpent>
+                <Button onPress={() => {this.props.navigation.navigate('NewOrder')}}>
+                    <Text>Novo Pedido</Text>
+                </Button>
+                <Button onPress={() => {this.props.navigation.navigate('NewSpent')}}>
+                    <Text>Novo Gasto</Text>
+                </Button>
+                <Button onPress={() => {this.props.navigation.navigate('NewCostumer')}}>
+                    <Text>Novo Cliente</Text>
+                </Button>
             </Container>
         );
     }

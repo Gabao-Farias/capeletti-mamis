@@ -31,6 +31,38 @@ export const InputText = styled.TextInput.attrs({
     font-size: 22px;
 `;
 
+export const DateCard = styled.View`
+    margin-top: 20px;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    padding: 10px;
+`;
+
+export const Subtitle = styled.Text`
+    align-self: center;
+    color: #fff;
+    font-size: 30px;
+`;
+
+export const InputsSmall = styled.View`
+    flex: 1;
+    flex-direction: row;
+`;
+
+export const SmallInput = styled.TextInput.attrs({
+    placeholderTextColor: "#aaa",
+})`
+    flex: 1;
+    background-color: #fff;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+    font-size: 18px;
+`;
+
 export const Options = styled.View`
     flex-direction: row;
     margin: 20px;
