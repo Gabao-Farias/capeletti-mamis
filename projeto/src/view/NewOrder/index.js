@@ -5,7 +5,7 @@ import getRealm from '../../services/realm';
 import getNewID from '../../services/IDProvider';
 import getCostumerIDFromCostumerName from '../../services/ProvideIDFromCostumer';
 
-import {Container, Title, Inputs, InputText, Options, Add, Back, AddText, BackText} from './styles';
+import {Container, Title, Inputs, InputText, DateCard, Subtitle, InputsSmall, SmallInput, Options, Add, Back, AddText, BackText} from './styles';
 
 export default class NewOrder extends Component {
     state = {
@@ -17,7 +17,11 @@ export default class NewOrder extends Component {
         size: '',
         ammount: '',
         value: 0,
-        deliverDate: '',
+        deliverDate: {
+            day: '',
+            month: '',
+            year: '',
+        },
         delivered: false,
         deliveredDate: null,
         others: {            
@@ -35,6 +39,7 @@ export default class NewOrder extends Component {
         const objects = realm.objects('Order');
 
         this.setState({id: Number(getNewID(objects))});
+        console.log(this.state.id);
     }
 
     defineCostumerID(){
@@ -43,11 +48,21 @@ export default class NewOrder extends Component {
 
     async saveOrder(order){
         try{
-            const data = {};
+            const data = {
+                id: order.id,
+                costumerID: order.costumerID,
+                costumerName: order.costumerName,
+                type: order.type,
+                flavor: order.flavor,
+                size: order.size,
+                ammount: Number(order.ammount),
+                value: 0,
+                deliverDate: new Date(order.deliverDate.year + order.deliverDate.month + order.deliverDate.day),
+                delivered: false,
+                deliveredDate: new Date('01/01/2000')
+            };
 
-            const realm = await getRealm();
-            
-            console.log(data);
+            const realm = await getRealm();            
             
             realm.write(() => {
                 realm.create('Order', data);
@@ -57,30 +72,54 @@ export default class NewOrder extends Component {
 
         }catch(err){
             console.log("Error on saving data");
+            console.log(err);
+        }
+    }
+
+    emptyFields(){
+        if(
+            this.state.costumerName === "" ||
+            this.state.type === "" ||
+            this.state.flavor === "" ||
+            this.state.size === "" ||
+            this.state.ammount === "" ||
+            this.state.deliverDate.year === "" ||
+            this.state.deliverDate.month === "" ||
+            this.state.deliverDate.day === ""
+        ){
+            return(true);
+        }else{
+            return(false);
         }
     }
 
     handleAddOrder(){
-        if(getCostumerIDFromCostumerName(this.state.costumerName, this.state.others.costumers) != null){
-            this.saveOrder(this.state);
+        if(!this.emptyFields()){
+            if(getCostumerIDFromCostumerName(this.state.costumerName, this.state.others.costumers) != null){
+                this.setState({costumerID: getCostumerIDFromCostumerName(this.state.costumerName, this.state.others.costumers)})
 
-            this.setState({
-                id: 0,
-                costumerID: 0,
-                costumerName: '',
-                type: '',
-                flavor: '',
-                size: '',
-                ammount: '',
-                value: 0,
-                deliverDate: '',
-                delivered: false,
-                deliveredDate: null
-            });
+                this.saveOrder(this.state);
 
-            this.defineNewID();
+                this.setState({
+                    id: 0,
+                    costumerID: 0,
+                    costumerName: '',
+                    type: '',
+                    flavor: '',
+                    size: '',
+                    ammount: '',
+                    value: 0,
+                    deliverDate: '',
+                    delivered: false,
+                    deliveredDate: null
+                });
+
+                this.defineNewID();
+            }else{
+                this.generateAlert("Cuidado!", "O cliente mencionado ainda não foi cadastrado! Cadastre-o para efetuar o pedido.");
+            }
         }else{
-            console.log("O cliente ainda não foi cadastrado!");
+            this.generateAlert("Cuidado!", "Não deixe nenhum campo em branco!");
         }
     }
 
@@ -99,10 +138,6 @@ export default class NewOrder extends Component {
     componentDidMount(){
         this.loadExistentCostumers();
         this.defineNewID();
-    }
-
-    componentDidUpdate(){
-        console.log(getCostumerIDFromCostumerName(this.state.costumerName, this.state.others.costumers));
     }
 
     render(){
@@ -149,24 +184,33 @@ export default class NewOrder extends Component {
                             value={this.state.ammount}
                             onChangeText={text => this.setState({ammount: text})}
                             textAlign='center'
-                            autoCapitalize={'words'}
+                            keyboardType='number-pad'
                             autoCorrect={false}
                             placeholder={'Quantidade (Unidades)'}
                         />
-                        <InputText
-                            value={this.state.deliverDate}
-                            onChangeText={text => this.setState({flavor: text})}
-                            textAlign='center'
-                            keyboardType='number-pad'
-                            autoCorrect={false}
-                            placeholder={'Data de entrega'}
-                        />
+                        <DateCard>
+                            <Subtitle>Data de entrega</Subtitle>
+                            <InputsSmall>
+                                <SmallInput 
+                                    placeholder={'Dia'}
+                                    textAlign='center'
+                                />
+                                <SmallInput 
+                                    placeholder={'Mês'}
+                                    textAlign='center'
+                                />
+                                <SmallInput 
+                                    placeholder={'Ano'}
+                                    textAlign='center'
+                                />
+                            </InputsSmall>
+                        </DateCard>
                     </Inputs>
                     <Options>
                         <Back onPress={() => {this.props.navigation.goBack()}}>
                             <BackText>Voltar</BackText>
                         </Back>
-                        <Add onPress={() => {/*this.handleAddOrder()*/}}>
+                        <Add onPress={() => {this.handleAddOrder()}}>
                             <AddText>Adicionar</AddText>
                         </Add>
                     </Options>

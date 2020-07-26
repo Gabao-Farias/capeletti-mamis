@@ -63,7 +63,7 @@ export default class NewCostumer extends Component {
 
             this.defineNewID();
         }else{
-
+            this.generateAlert("Já existe","O nome do cliente já foi cadastrado!");
         }
     }
 
