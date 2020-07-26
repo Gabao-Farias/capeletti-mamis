@@ -20,51 +20,7 @@ export const Inputs = styled.View`
     padding: 20px;
 `;
 
-export const InputCostumerName = styled.TextInput.attrs({
-    placeholderTextColor: "#aaa",
-})`
-    background-color: #fff;
-    padding-left: 20px;
-    padding-right: 20px;
-    border-radius: 10px;
-    margin-top: 10px;
-    font-size: 22px;
-`;
-
-export const InputType = styled.TextInput.attrs({
-    placeholderTextColor: "#aaa",
-})`
-    background-color: #fff;
-    padding-left: 20px;
-    padding-right: 20px;
-    border-radius: 10px;
-    margin-top: 10px;
-    font-size: 22px;
-`;
-
-export const InputFlavor = styled.TextInput.attrs({
-    placeholderTextColor: "#aaa",
-})`
-    background-color: #fff;
-    padding-left: 20px;
-    padding-right: 20px;
-    border-radius: 10px;
-    margin-top: 10px;
-    font-size: 22px;
-`;
-
-export const InputSize = styled.TextInput.attrs({
-    placeholderTextColor: "#aaa",
-})`
-    background-color: #fff;
-    padding-left: 20px;
-    padding-right: 20px;
-    border-radius: 10px;
-    margin-top: 10px;
-    font-size: 22px;
-`;
-
-export const InputValue = styled.TextInput.attrs({
+export const InputText = styled.TextInput.attrs({
     placeholderTextColor: "#aaa",
 })`
     background-color: #fff;

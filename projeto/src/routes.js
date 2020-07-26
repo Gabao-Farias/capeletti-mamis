@@ -5,16 +5,18 @@ import {createStackNavigator} from '@react-navigation/stack';
 import Main from './view/Main';
 import NewOrder from './view/NewOrder';
 import NewSpent from './view/NewSpent';
+import NewCostumer from './view/NewCostumer';
 
 const Stack = createStackNavigator();
 
 export default function Routes() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Main" headerMode="none">
+      <Stack.Navigator initialRouteName="NewCostumer" headerMode="none">
         <Stack.Screen name="Main" component={Main} />
         <Stack.Screen name="NewOrder" component={NewOrder} />
         <Stack.Screen name="NewSpent" component={NewSpent} />
+        <Stack.Screen name="NewCostumer" component={NewCostumer} />
       </Stack.Navigator>
     </NavigationContainer>
   );

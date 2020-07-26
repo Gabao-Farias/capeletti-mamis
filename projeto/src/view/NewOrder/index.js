@@ -4,7 +4,7 @@ import { ScrollView,  Alert } from 'react-native';
 import getRealm from '../../services/realm';
 import getNewID from '../../services/IDProvider';
 
-import {Container, Title, Inputs, InputCostumerName, InputType, InputFlavor, InputSize, InputValue, Options, Add, Back, AddText, BackText} from './styles';
+import {Container, Title, Inputs, InputText, Options, Add, Back, AddText, BackText} from './styles';
 
 export default class NewOrder extends Component {
     state = {
@@ -31,7 +31,7 @@ export default class NewOrder extends Component {
 
     async saveOrder(order){
         try{
-            const data = {
+            const data = { //FIX IT
                 id: order.id,
                 clientName: order.clientName,
                 type: order.type,
@@ -49,7 +49,7 @@ export default class NewOrder extends Component {
                 realm.create('Order', data);
             });
 
-            this.generateAlert("Concluído", "Pedido realizado com sucesso");
+            this.generateAlert("Concluído", "Pedido adicionado aos pendentes!");
 
         }catch(err){
             console.log("Error on saving data");
@@ -60,7 +60,7 @@ export default class NewOrder extends Component {
         try{
             this.saveOrder(this.state);
 
-            this.setState({
+            this.setState({//FIX IT
                 id: 0,
                 clientName: '',
                 type: '',
@@ -89,7 +89,7 @@ export default class NewOrder extends Component {
                 >
                     <Title>Novo Pedido</Title>
                     <Inputs>
-                        <InputCostumerName
+                        <InputText
                             value={this.state.clientName}
                             onChangeText={text => this.setState({clientName: text})}
                             textAlign='center'
@@ -97,45 +97,12 @@ export default class NewOrder extends Component {
                             autoCorrect={false}
                             placeholder={'Nome do cliente'}
                         />
-                        <InputType
-                            value={this.state.type}
-                            onChangeText={text => this.setState({type: text})}
-                            textAlign='center'
-                            autoCapitalize={'words'}
-                            autoCorrect={false}
-                            placeholder={'Tipo'}
-                        />
-                        <InputFlavor
-                            value={this.state.flavor}
-                            onChangeText={text => this.setState({flavor: text})}
-                            textAlign='center'
-                            autoCapitalize={'words'}
-                            autoCorrect={false}
-                            placeholder={'Sabor'}
-                        />
-                        <InputSize
-                            value={this.state.size}
-                            onChangeText={text => this.setState({size: text})}
-                            textAlign='center'
-                            autoCapitalize={'words'}
-                            autoCorrect={false}
-                            placeholder={'Tamanho'}
-                        />
-                        <InputValue
-                            value={this.state.value}
-                            onChangeText={text => this.setState({value: text})}
-                            textAlign='center'
-                            autoCapitalize={'words'}
-                            autoCorrect={false}
-                            placeholder={'Valor (R$)'}
-                            keyboardType={'numeric'}
-                        />
                     </Inputs>
                     <Options>
                         <Back onPress={() => {this.props.navigation.goBack()}}>
                             <BackText>Voltar</BackText>
                         </Back>
-                        <Add onPress={() => {this.handleAddOrder()}}>
+                        <Add onPress={() => {/*this.handleAddOrder()*/}}>
                             <AddText>Adicionar</AddText>
                         </Add>
                     </Options>
