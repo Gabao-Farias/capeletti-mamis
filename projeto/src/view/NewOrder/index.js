@@ -17,11 +17,9 @@ export default class NewOrder extends Component {
         size: '',
         ammount: '',
         value: 0,
-        deliverDate: {
-            day: '',
-            month: '',
-            year: '',
-        },
+        day: '',
+        month: '',
+        year: '',
         delivered: false,
         deliveredDate: null,
         others: {            
@@ -57,7 +55,7 @@ export default class NewOrder extends Component {
                 size: order.size,
                 ammount: Number(order.ammount),
                 value: 0,
-                deliverDate: new Date(order.deliverDate.year + order.deliverDate.month + order.deliverDate.day),
+                deliverDate: new Date(order.year + '/' + order.month + '/' +  order.day),
                 delivered: false,
                 deliveredDate: new Date('01/01/2000')
             };
@@ -83,9 +81,9 @@ export default class NewOrder extends Component {
             this.state.flavor === "" ||
             this.state.size === "" ||
             this.state.ammount === "" ||
-            this.state.deliverDate.year === "" ||
-            this.state.deliverDate.month === "" ||
-            this.state.deliverDate.day === ""
+            this.state.year === "" ||
+            this.state.month === "" ||
+            this.state.day === ""
         ){
             return(true);
         }else{
@@ -109,7 +107,9 @@ export default class NewOrder extends Component {
                     size: '',
                     ammount: '',
                     value: 0,
-                    deliverDate: '',
+                    day: '',
+                    month: '',
+                    year: '',
                     delivered: false,
                     deliveredDate: null
                 });
@@ -191,16 +191,25 @@ export default class NewOrder extends Component {
                         <DateCard>
                             <Subtitle>Data de entrega</Subtitle>
                             <InputsSmall>
-                                <SmallInput 
+                                <SmallInput
+                                    value={this.state.day}
+                                    onChangeText={text => this.setState({day: text})}
                                     placeholder={'Dia'}
+                                    keyboardType='number-pad'
                                     textAlign='center'
                                 />
-                                <SmallInput 
+                                <SmallInput
+                                    value={this.state.month}
+                                    onChangeText={text => this.setState({month: text})}
                                     placeholder={'Mês'}
+                                    keyboardType='number-pad'
                                     textAlign='center'
                                 />
-                                <SmallInput 
+                                <SmallInput
+                                    value={this.state.year}
+                                    onChangeText={text => this.setState({year: text})}
                                     placeholder={'Ano'}
+                                    keyboardType='number-pad'
                                     textAlign='center'
                                 />
                             </InputsSmall>

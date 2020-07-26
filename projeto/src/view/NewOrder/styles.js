@@ -20,18 +20,6 @@ export const Inputs = styled.View`
     padding: 20px;
 `;
 
-export const CostumerInputText = styled.TextInput.attrs({
-    placeholderTextColor: "#aaa",
-})`
-    background-color: #fff;
-    padding-left: 20px;
-    padding-right: 20px;
-    border-radius: 10px;
-    margin-top: 10px;
-    font-size: 22px;
-    border: 2px solid ${props => props.exists ? "#D85050" : "#4DCF8E"};
-`;
-
 export const InputText = styled.TextInput.attrs({
     placeholderTextColor: "#aaa",
 })`
