@@ -4,6 +4,7 @@ import { ScrollView,  Alert } from 'react-native';
 import getRealm from '../../services/realm';
 import getNewID from '../../services/IDProvider';
 import getCostumerIDFromCostumerName from '../../services/ProvideIDFromCostumer';
+import isValidDate from '../../services/ValidDate';
 
 import {Container, Title, Inputs, InputText, DateCard, Subtitle, InputsSmall, SmallInput, Options, Add, Back, AddText, BackText} from './styles';
 
@@ -94,27 +95,31 @@ export default class NewOrder extends Component {
     handleAddOrder(){
         if(!this.emptyFields()){
             if(getCostumerIDFromCostumerName(this.state.costumerName, this.state.others.costumers) != null){
-                this.setState({costumerID: getCostumerIDFromCostumerName(this.state.costumerName, this.state.others.costumers)})
+                if(isValidDate(this.state.year + '/' + this.state.month + '/' +  this.state.day)){
+                    this.setState({costumerID: getCostumerIDFromCostumerName(this.state.costumerName, this.state.others.costumers)})
 
-                this.saveOrder(this.state);
+                    this.saveOrder(this.state);
 
-                this.setState({
-                    id: 0,
-                    costumerID: 0,
-                    costumerName: '',
-                    type: '',
-                    flavor: '',
-                    size: '',
-                    ammount: '',
-                    value: 0,
-                    day: '',
-                    month: '',
-                    year: '',
-                    delivered: false,
-                    deliveredDate: null
-                });
+                    this.setState({
+                        id: 0,
+                        costumerID: 0,
+                        costumerName: '',
+                        type: '',
+                        flavor: '',
+                        size: '',
+                        ammount: '',
+                        value: 0,
+                        day: '',
+                        month: '',
+                        year: '',
+                        delivered: false,
+                        deliveredDate: null
+                    });
 
-                this.defineNewID();
+                    this.defineNewID();
+                }else{
+                    this.generateAlert("Cuidado!", "Data inválida.");    
+                }
             }else{
                 this.generateAlert("Cuidado!", "O cliente mencionado ainda não foi cadastrado! Cadastre-o para efetuar o pedido.");
             }
