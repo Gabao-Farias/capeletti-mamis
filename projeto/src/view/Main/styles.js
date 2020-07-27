@@ -7,21 +7,34 @@ export const Container = styled(LinearGradient).attrs({
     end: {x: 1, y: 1},
 })`
     flex: 1;
-    justify-content: center;
+`;
+
+export const Options = styled.View`
+    margin: 20px;
+    padding: 20px;
+    flex: 1;
+    justify-content: space-around;
+    border: 2px solid #fff;
+    border-radius: 20px;
+`;
+
+export const Title = styled.Text`
+    align-self: center;
+    margin-top: 40px;
+    color: #fff;
+    font-size: 38px;
 `;
 
 export const Button = styled.TouchableOpacity`
-    flex-direction: row;
     align-self: center;
     border-radius: 20px;
-    margin-bottom: 40px;
+    width: 280px;
     padding: 20px;
-    padding-left: 50px;
-    padding-right: 50px;
     background-color: #fff;
 `;
 
 export const Text = styled.Text`
+    text-align: center;
     font-size: 20px;
     font-weight: bold;
     color: #72075F;
