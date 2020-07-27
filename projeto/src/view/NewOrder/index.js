@@ -23,9 +23,7 @@ export default class NewOrder extends Component {
         year: '',
         delivered: false,
         deliveredDate: null,
-        others: {            
-            costumers: [],
-        }
+        otherCostumers: [],
     }
 
     generateAlert(title, message){
@@ -38,7 +36,7 @@ export default class NewOrder extends Component {
         const objects = realm.objects('Order');
 
         this.setState({id: Number(getNewID(objects))});
-        console.log(this.state.id);
+        console.log("(defineNewID) -> ID da Order:" + this.state.id);
     }
 
     async saveOrder(order){
@@ -66,6 +64,7 @@ export default class NewOrder extends Component {
             this.generateAlert("Concluído", "Pedido adicionado aos pendentes!");
 
         }catch(err){
+            this.generateAlert("Erro!", "Consultar desenvolvedor!");
             console.log("Error on saving data");
             console.log(err);
         }
@@ -82,23 +81,25 @@ export default class NewOrder extends Component {
             this.state.month === "" ||
             this.state.day === ""
         ){
+            console.log("True");
             return(true);
         }else{
+            console.log("True");
             return(false);
         }
     }
 
     handleAddOrder(){
-        if(!this.emptyFields()){
-            if(getCostumerIDFromCostumerName(this.state.costumerName, this.state.others.costumers) != null){
-                
-                console.log(isValidDate(this.state.year + '/' + this.state.month + '/' +  this.state.day));
-                console.log(this.state.costumerID + " -> " + this.state.costumerName);
+        this.defineNewID();
+        this.loadExistentCostumers();
+
+        if(!(this.emptyFields())){
+            if(getCostumerIDFromCostumerName(this.state.costumerName, this.state.otherCostumers) != null){
                 if(isValidDate(this.state.year + '/' + this.state.month + '/' +  this.state.day)){
-                    this.setState({costumerID: getCostumerIDFromCostumerName(this.state.costumerName, this.state.others.costumers)})
+                    this.setState({costumerID: getCostumerIDFromCostumerName(this.state.costumerName, this.state.otherCostumers)});
 
                     this.saveOrder(this.state);
-
+                    
                     this.setState({
                         id: 0,
                         costumerID: 0,
@@ -114,10 +115,8 @@ export default class NewOrder extends Component {
                         delivered: false,
                         deliveredDate: null
                     });
-
-                    this.defineNewID();
                 }else{
-                    this.generateAlert("Cuidado!", "Data inválida.");    
+                    this.generateAlert("Cuidado!", "Data inválida.");
                 }
             }else{
                 this.generateAlert("Cuidado!", "O cliente mencionado ainda não foi cadastrado! Cadastre-o para efetuar o pedido.");
@@ -133,14 +132,11 @@ export default class NewOrder extends Component {
 
             const data = realm.objects('Costumer');
 
-            this.setState({others: {costumers: data}});
+            this.setState({otherCostumers: data});
         }catch(err){
+            console.log(err);
             this.generateAlert("Erro", "Não foi possível estabelecer conexão com o banco de dados!");
         }
-    }
-
-    componentDidMount(){
-        this.loadExistentCostumers();
     }
 
     render(){
