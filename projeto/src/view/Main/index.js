@@ -16,6 +16,9 @@ export default class Main extends Component {
                 <Button onPress={() => {this.props.navigation.navigate('NewCostumer')}}>
                     <Text>Novo Cliente</Text>
                 </Button>
+                <Button onPress={() => {this.props.navigation.navigate('PendingOrders')}}>
+                    <Text>Pedidos Pendentes</Text>
+                </Button>
             </Container>
         );
     }
