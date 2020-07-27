@@ -41,10 +41,6 @@ export default class NewOrder extends Component {
         console.log(this.state.id);
     }
 
-    defineCostumerID(){
-        this.setState({id: getCostumerIDFromCostumerName(this.state.costumerName, this.state.others.costumers)});
-    }
-
     async saveOrder(order){
         try{
             const data = {
@@ -95,6 +91,9 @@ export default class NewOrder extends Component {
     handleAddOrder(){
         if(!this.emptyFields()){
             if(getCostumerIDFromCostumerName(this.state.costumerName, this.state.others.costumers) != null){
+                
+                console.log(isValidDate(this.state.year + '/' + this.state.month + '/' +  this.state.day));
+                console.log(this.state.costumerID + " -> " + this.state.costumerName);
                 if(isValidDate(this.state.year + '/' + this.state.month + '/' +  this.state.day)){
                     this.setState({costumerID: getCostumerIDFromCostumerName(this.state.costumerName, this.state.others.costumers)})
 
@@ -142,7 +141,6 @@ export default class NewOrder extends Component {
 
     componentDidMount(){
         this.loadExistentCostumers();
-        this.defineNewID();
     }
 
     render(){

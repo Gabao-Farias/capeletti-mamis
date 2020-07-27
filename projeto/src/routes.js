@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
+import {NavigationContainer, StackRouter} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 
 import Main from './view/Main';
@@ -15,14 +15,13 @@ const Stack = createStackNavigator();
 export default function Routes() {
   return (
     <NavigationContainer>
-        <Stack.Navigator initialRouteName="Main" headerMode="none">
+        <Stack.Navigator initialRouteName="Main" headerMode="none" >
           <Stack.Screen name="Main" component={Main} />
           <Stack.Screen name="NewOrder" component={NewOrder} />
           <Stack.Screen name="NewSpent" component={NewSpent} />
           <Stack.Screen name="NewCostumer" component={NewCostumer} />
           <Stack.Screen name="PendingOrders" component={PendingOrders} />
         </Stack.Navigator>
-      <BottomNavigator />
     </NavigationContainer>
   );
 }
