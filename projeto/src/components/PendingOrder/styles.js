@@ -4,7 +4,8 @@ export const Container = styled.View`
     background-color: #fff;
     border-radius: 10px;
     padding: 10px;
-    margin-top: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 `;
 
 export const Name = styled.Text`
@@ -53,7 +54,8 @@ export const Price = styled.TextInput.attrs({
 
 export const ConfirmDeliver = styled.TouchableOpacity`
     margin-top: 5px;
-    border: 2px solid #4DCF8E;
+    padding: 2px;
+    background-color: #4DCF8E;
     border-radius: 6px;
     align-items: center;
 `;
@@ -61,5 +63,6 @@ export const ConfirmDeliver = styled.TouchableOpacity`
 export const DeliverText = styled.Text`
     font-size: 20px;
     text-align: center;
-    color: #4DCF8E;
+    color: #fff;
+
 `;

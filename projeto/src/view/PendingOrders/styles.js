@@ -10,9 +10,21 @@ export const Container = styled(LinearGradient).attrs({
     justify-content: center;
 `;
 
+export const Title = styled.Text`
+    align-self: center;
+    margin-top: 40px;
+    color: #fff;
+    font-size: 38px;
+`;
+
+export const Description = styled.Text`
+    text-align: center;
+    color: #fff;
+    margin-bottom: 5px;
+`;
+
 export const List = styled.FlatList.attrs({
     contentContainerStyle: { paddingHorizontal: 20 },
     showsVerticalScrollIndicator: false,
 })`
-    margin-top: 20px;
 `;

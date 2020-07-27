@@ -4,7 +4,7 @@ import getRealm from '../../services/realm';
 
 import PendingOrder from '../../components/PendingOrder';
 
-import { Container, List } from './styles';
+import { Container, Title, Description, List } from './styles';
 
 export default class PendingOrders extends Component{
     state = {
@@ -33,6 +33,8 @@ export default class PendingOrders extends Component{
     render(){
         return(
             <Container>
+                <Title>Pedidos Pendentes</Title>
+                <Description>{this.state.pendingOrders.length} pedidos</Description>
                 <List
                     keyboardShouldPersistTaps="handled"
                     data={this.state.pendingOrders}

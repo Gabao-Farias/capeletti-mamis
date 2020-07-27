@@ -27,7 +27,7 @@ export default function PendingOrder({order}){
                 keyboardType='number-pad'
                 textAlign='center'
             />
-            <ConfirmDeliver onPress={() => {console.log(price)}}>
+            <ConfirmDeliver onPress={() => {}}>
                 <DeliverText>Confirmar Entrega</DeliverText>
             </ConfirmDeliver>
         </Container>
