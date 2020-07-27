@@ -14,7 +14,7 @@ export const Button = styled.TouchableOpacity`
     flex-direction: row;
     align-self: center;
     border-radius: 20px;
-    margin-bottom: 100px;
+    margin-bottom: 40px;
     padding: 20px;
     padding-left: 50px;
     padding-right: 50px;

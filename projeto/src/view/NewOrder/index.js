@@ -23,9 +23,7 @@ export default class NewOrder extends Component {
         year: '',
         delivered: false,
         deliveredDate: null,
-        others: {            
-            costumers: [],
-        }
+        otherCostumers: [],
     }
 
     generateAlert(title, message){
@@ -33,16 +31,16 @@ export default class NewOrder extends Component {
     }
 
     async defineNewID(){
-        const realm = await getRealm();
+        try{
+            const realm = await getRealm();
 
-        const objects = realm.objects('Order');
+            const objects = realm.objects('Order');
 
-        this.setState({id: Number(getNewID(objects))});
-        console.log(this.state.id);
-    }
-
-    defineCostumerID(){
-        this.setState({id: getCostumerIDFromCostumerName(this.state.costumerName, this.state.others.costumers)});
+            this.setState({id: Number(getNewID(objects))});
+            console.log("(defineNewID) -> ID da Order:" + this.state.id);
+        }catch(err){
+            console.log(err);
+        }
     }
 
     async saveOrder(order){
@@ -70,6 +68,7 @@ export default class NewOrder extends Component {
             this.generateAlert("Concluído", "Pedido adicionado aos pendentes!");
 
         }catch(err){
+            this.generateAlert("Erro!", "Consultar desenvolvedor!");
             console.log("Error on saving data");
             console.log(err);
         }
@@ -86,20 +85,23 @@ export default class NewOrder extends Component {
             this.state.month === "" ||
             this.state.day === ""
         ){
+            console.log("True");
             return(true);
         }else{
+            console.log("True");
             return(false);
         }
     }
 
     handleAddOrder(){
-        if(!this.emptyFields()){
-            if(getCostumerIDFromCostumerName(this.state.costumerName, this.state.others.costumers) != null){
+        if(!(this.emptyFields())){
+            console.log("Prestes a registrar ID: " + this.state.id);
+            if(getCostumerIDFromCostumerName(this.state.costumerName, this.state.otherCostumers) != null){
                 if(isValidDate(this.state.year + '/' + this.state.month + '/' +  this.state.day)){
-                    this.setState({costumerID: getCostumerIDFromCostumerName(this.state.costumerName, this.state.others.costumers)})
+                    this.setState({costumerID: getCostumerIDFromCostumerName(this.state.costumerName, this.state.otherCostumers)});
 
                     this.saveOrder(this.state);
-
+                    
                     this.setState({
                         id: 0,
                         costumerID: 0,
@@ -116,9 +118,8 @@ export default class NewOrder extends Component {
                         deliveredDate: null
                     });
 
-                    this.defineNewID();
                 }else{
-                    this.generateAlert("Cuidado!", "Data inválida.");    
+                    this.generateAlert("Cuidado!", "Data inválida.");
                 }
             }else{
                 this.generateAlert("Cuidado!", "O cliente mencionado ainda não foi cadastrado! Cadastre-o para efetuar o pedido.");
@@ -133,16 +134,19 @@ export default class NewOrder extends Component {
             const realm = await getRealm();
 
             const data = realm.objects('Costumer');
+            console.log(data);
 
-            this.setState({others: {costumers: data}});
+            this.setState({otherCostumers: data});
+
+            console.log(this.state.otherCostumers.length);
         }catch(err){
+            console.log(err);
             this.generateAlert("Erro", "Não foi possível estabelecer conexão com o banco de dados!");
         }
     }
 
     componentDidMount(){
         this.loadExistentCostumers();
-        this.defineNewID();
     }
 
     render(){
@@ -187,7 +191,10 @@ export default class NewOrder extends Component {
                         />
                         <InputText
                             value={this.state.ammount}
-                            onChangeText={text => this.setState({ammount: text})}
+                            onChangeText={text => {
+                                this.setState({ammount: text});
+                                this.defineNewID();
+                            }}
                             textAlign='center'
                             keyboardType='number-pad'
                             autoCorrect={false}
