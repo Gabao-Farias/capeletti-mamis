@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 
 import { Container, Button, Text } from './styles';
 
+import BottomNavigator from '../../components/BottomNavigator';
+
 export default class Main extends Component {
 
     render(){
