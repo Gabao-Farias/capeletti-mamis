@@ -31,12 +31,16 @@ export default class NewOrder extends Component {
     }
 
     async defineNewID(){
-        const realm = await getRealm();
+        try{
+            const realm = await getRealm();
 
-        const objects = realm.objects('Order');
+            const objects = realm.objects('Order');
 
-        this.setState({id: Number(getNewID(objects))});
-        console.log("(defineNewID) -> ID da Order:" + this.state.id);
+            this.setState({id: Number(getNewID(objects))});
+            console.log("(defineNewID) -> ID da Order:" + this.state.id);
+        }catch(err){
+            console.log(err);
+        }
     }
 
     async saveOrder(order){
@@ -90,10 +94,8 @@ export default class NewOrder extends Component {
     }
 
     handleAddOrder(){
-        this.defineNewID();
-        this.loadExistentCostumers();
-
         if(!(this.emptyFields())){
+            console.log("Prestes a registrar ID: " + this.state.id);
             if(getCostumerIDFromCostumerName(this.state.costumerName, this.state.otherCostumers) != null){
                 if(isValidDate(this.state.year + '/' + this.state.month + '/' +  this.state.day)){
                     this.setState({costumerID: getCostumerIDFromCostumerName(this.state.costumerName, this.state.otherCostumers)});
@@ -115,6 +117,7 @@ export default class NewOrder extends Component {
                         delivered: false,
                         deliveredDate: null
                     });
+
                 }else{
                     this.generateAlert("Cuidado!", "Data inválida.");
                 }
@@ -131,12 +134,19 @@ export default class NewOrder extends Component {
             const realm = await getRealm();
 
             const data = realm.objects('Costumer');
+            console.log(data);
 
             this.setState({otherCostumers: data});
+
+            console.log(this.state.otherCostumers.length);
         }catch(err){
             console.log(err);
             this.generateAlert("Erro", "Não foi possível estabelecer conexão com o banco de dados!");
         }
+    }
+
+    componentDidMount(){
+        this.loadExistentCostumers();
     }
 
     render(){
@@ -181,7 +191,10 @@ export default class NewOrder extends Component {
                         />
                         <InputText
                             value={this.state.ammount}
-                            onChangeText={text => this.setState({ammount: text})}
+                            onChangeText={text => {
+                                this.setState({ammount: text});
+                                this.defineNewID();
+                            }}
                             textAlign='center'
                             keyboardType='number-pad'
                             autoCorrect={false}
