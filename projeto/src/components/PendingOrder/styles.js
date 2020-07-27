@@ -42,9 +42,24 @@ export const LilDesc = styled.Text`
     border-radius: 6px;
 `;
 
-export const Price = styled.TextInput`
+export const Price = styled.TextInput.attrs({
+    placeholderTextColor: "#8A0F74"
+})`
+    margin-top: 5px;
+    border-radius: 6px;
+    font-size: 20px;
+    border: 2px solid #8A0F74;
 `;
 
-export const ConfirmDeliver = styled.View``;
+export const ConfirmDeliver = styled.TouchableOpacity`
+    margin-top: 5px;
+    border: 2px solid #4DCF8E;
+    border-radius: 6px;
+    align-items: center;
+`;
 
-export const DeliverText = styled.Text``;
+export const DeliverText = styled.Text`
+    font-size: 20px;
+    text-align: center;
+    color: #4DCF8E;
+`;
