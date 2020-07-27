@@ -19,7 +19,7 @@ export const DescriptionCard = styled.View`
     padding: 3px;
 `;
 
-export const Date = styled.Text`
+export const DeliverDate = styled.Text`
     font-size: 20px;
     text-align: center;
     color: #fff;
@@ -46,6 +46,7 @@ export const LilDesc = styled.Text`
 export const Price = styled.TextInput.attrs({
     placeholderTextColor: "#8A0F74"
 })`
+    color: #8A0F74;
     margin-top: 5px;
     border-radius: 6px;
     font-size: 20px;
