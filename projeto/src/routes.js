@@ -8,6 +8,7 @@ import NewSpent from './view/NewSpent';
 import NewCostumer from './view/NewCostumer';
 import PendingOrders from './view/PendingOrders';
 import BottomNavigator from './components/BottomNavigator';
+import FinishedOrder from './view/FinishedOrder';
 
 const Stack = createStackNavigator();
 
@@ -20,6 +21,7 @@ export default function Routes() {
         <Stack.Screen name="NewSpent" component={NewSpent} />
         <Stack.Screen name="NewCostumer" component={NewCostumer} />
         <Stack.Screen name="PendingOrders" component={PendingOrders} />
+        <Stack.Screen name="FinishedOrder" component={FinishedOrder} />
       </Stack.Navigator>
     </NavigationContainer>
   );
