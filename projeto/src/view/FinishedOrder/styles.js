@@ -29,7 +29,6 @@ export const Back = styled.TouchableOpacity`
     padding: 10px;
     border: 1px solid #D85050;
     border-radius: 12px;
-    width: 120px;
 `;
 
 export const BackText = styled.Text`
