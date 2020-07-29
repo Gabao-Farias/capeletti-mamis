@@ -19,7 +19,7 @@ export default class PendingOrders extends Component{
 
             const filteredOrders = unfilteredOrders.filtered('delivered = false SORT(deliverDate ASC)');
 
-            this.setState({pendingOrders: filteredOrders})
+            this.setState({pendingOrders: filteredOrders});
 
         }catch(err){
             console.log(err);
@@ -40,7 +40,7 @@ export default class PendingOrders extends Component{
                     data={this.state.pendingOrders}
                     keyExtractor={item => String(item.id)}
                     renderItem={({item}) => (
-                        <PendingOrder order={item} />
+                        <PendingOrder order={item} navigation={this.props.navigation} />
                     )}
                 />
             </Container>
