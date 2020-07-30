@@ -6,7 +6,7 @@ import {format} from 'date-fns';
 
 import { Container, Name, DescriptionCard, DeliverDate, SmallDescription, LilDesc, Price, ConfirmDeliver, DeliverText } from './styles';
 
-export default function PendingOrder({order}){
+export default function PendingOrder({order, navigation}){
     const [price, setPrice] = useState('');
 
     async function handleConfirmDeliver(){
@@ -21,7 +21,7 @@ export default function PendingOrder({order}){
                     realm.create('Order', {id: order.id, value: Number(price), delivered: true, deliveredDate: new Date}, 'modified');
                 });
 
-                Alert.alert("Entregue!", "Pedido entregue.");
+                navigation.navigate("FinishedOrder");
             }catch(err){
                 Alert.alert('Erro','Erro ao confirmar entrega!');
                 console.log(err);

@@ -15,11 +15,9 @@ export default class PendingOrders extends Component{
         try{
             const realm = await getRealm();
 
-            const unfilteredOrders = realm.objects('Order');
+            const Orders = realm.objects('Order').filtered('delivered = false SORT(deliverDate ASC)');
 
-            const filteredOrders = unfilteredOrders.filtered('delivered = false SORT(deliverDate ASC)');
-
-            this.setState({pendingOrders: filteredOrders})
+            this.setState({pendingOrders: Orders});
 
         }catch(err){
             console.log(err);
@@ -40,7 +38,7 @@ export default class PendingOrders extends Component{
                     data={this.state.pendingOrders}
                     keyExtractor={item => String(item.id)}
                     renderItem={({item}) => (
-                        <PendingOrder order={item} />
+                        <PendingOrder order={item} navigation={this.props.navigation} />
                     )}
                 />
             </Container>
