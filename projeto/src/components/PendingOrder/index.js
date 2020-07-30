@@ -3,6 +3,7 @@ import { Alert } from 'react-native';
 import getRealm from '../../services/realm';
 
 import {format} from 'date-fns';
+import PT_BR from 'date-fns/locale/pt-BR';
 
 import { Container, Name, DescriptionCard, DeliverDate, SmallDescription, LilDesc, Price, ConfirmDeliver, DeliverText } from './styles';
 
@@ -28,14 +29,18 @@ export default function PendingOrder({order, navigation}){
             }
         }else{
             Alert.alert("Aviso", "Insira o valor final do produto antes de confirmar a entrega!");
-        }        
+        }
     }
 
     return(
         <Container>
             <Name>{order.costumerName}</Name>
             <DescriptionCard>
-                <DeliverDate>{format(order.deliverDate, "'Dia' dd 'de' MMMM")}</DeliverDate>
+                <DeliverDate>{format(
+                    order.deliverDate,
+                    "'Dia' dd 'de' MMMM",
+                    {locale: PT_BR}
+                )}</DeliverDate>
                 <SmallDescription>
                     <LilDesc>{order.type}</LilDesc>
                     <LilDesc>{order.flavor}</LilDesc>
