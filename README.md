@@ -19,7 +19,6 @@
 * [Technologies](#%EF%B8%8F-technologies-involved)
 * [Platforms](#%EF%B8%8F-platforms)
 * [Database Management](#-database-management)
-* [Requirements to Run](#%EF%B8%8F-requirements-to-run)
 
 ### ℹ️ About
 This is a pretty particular project, so it's based on the environment wich my mom is working with (delivering homemade italian food).
