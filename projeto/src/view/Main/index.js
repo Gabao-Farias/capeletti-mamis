@@ -2,8 +2,6 @@ import React, {Component} from 'react';
 
 import { Container, Title, Options, Button, Text } from './styles';
 
-import BottomNavigator from '../../components/BottomNavigator';
-
 export default class Main extends Component {
 
     render(){
@@ -11,7 +9,7 @@ export default class Main extends Component {
             <Container>
                 <Title>Menu</Title>
                 <Options>
-                    <Button onPress={() => {this.props.navigation.navigate('NewOrder')}}>
+                    <Button onPress={() => {this.props.navigation.navigate('SelectCostumer')}}>
                         <Text>Novo Pedido</Text>
                     </Button>
                     <Button onPress={() => {this.props.navigation.navigate('NewSpent')}}>
