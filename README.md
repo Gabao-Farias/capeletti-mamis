@@ -1,16 +1,30 @@
-<h1 align="center">🍲 Order manager 🥧</h1>
+<h1 align="center">🍲 Order manager 🥧 (🚧🏗️ Still working...)</h1>
+<h4 align="center">React-native project to manage orders.</h4>
+
 <p align="center">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" width=250px />
+    <a href="https://reactnative.dev/">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" width=250px />
+    </a>
 </p>
+
 <p align="center">
-    <img src="https://cdn.worldvectorlogo.com/logos/realmio.svg" height=75px />
+    <a href="https://realm.io/">
+        <img src="https://cdn.worldvectorlogo.com/logos/realmio.svg" width=250px />
+    </a>
+</p>
+
+<h4 align="center">If this project was possible, is thanks to</h4>
+
+<p align="center">
+    <a href="https://rocketseat.com.br/">
+        <img src="https://raw.githubusercontent.com/Rocketseat/rocketseat-vscode-react-native-snippets/master/images/rocketseat_logo.png" height=75px />
+    </a>
 </p>
 
 <h1 align="center">
- <img src="https://img.shields.io/badge/Made with-❤️-red">
+ <img src="https://img.shields.io/badge/Made with-❤️-%23BF0000">
 </h1>
 
-<h2 align="center">This project has been started with the objective of studying the stack.</h2>
 
 ## Summary
 * [About](#ℹ%EF%B8%8F-about)
