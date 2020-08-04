@@ -2,9 +2,14 @@ import React, { Component } from 'react';
 
 import getRealm from '../../../services/realm';
 
+import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
+import AntIcon from 'react-native-vector-icons/AntDesign';
+
 import {
     Container,
     Title,
+    Progress,
+    IconSpace,
     ListContainer,
     CostumerList,
     CostumerContainer,
@@ -16,6 +21,7 @@ import {
     Back,
     BackText
 } from './styles';
+
 import { Alert } from 'react-native';
 
 export default class SelectCostumer extends Component{
@@ -54,6 +60,43 @@ export default class SelectCostumer extends Component{
         return(
             <Container>
                 <Title>Selecione o cliente</Title>
+
+                <Progress>
+                    <IconSpace>
+                        <AntIcon name="user" size={30} color="#fff" />
+                    </IconSpace>
+                    <IconSpace>
+                        <AntIcon name="arrowright" size={20} color="#aaa" />
+                    </IconSpace>
+                    <IconSpace>
+                        <MaterialCommunityIcon name="pasta" size={20} color="#aaa" />
+                    </IconSpace>
+                    <IconSpace>
+                        <AntIcon name="arrowright" size={20} color="#aaa" />
+                    </IconSpace>
+                    <IconSpace>
+                        <MaterialCommunityIcon name="food-steak" size={20} color="#aaa" />
+                    </IconSpace>
+                    <IconSpace>
+                        <AntIcon name="arrowright" size={20} color="#aaa" />
+                    </IconSpace>
+                    <IconSpace>
+                        <MaterialCommunityIcon name="weight" size={20} color="#aaa" />
+                    </IconSpace>
+                    <IconSpace>
+                        <AntIcon name="arrowright" size={20} color="#aaa" />
+                    </IconSpace>
+                    <IconSpace>
+                        <MaterialCommunityIcon name="stack-overflow" size={20} color="#aaa" />
+                    </IconSpace>
+                    <IconSpace>
+                        <AntIcon name="arrowright" size={20} color="#aaa" />
+                    </IconSpace>
+                    <IconSpace>
+                        <AntIcon name="calendar" size={20} color="#aaa" />
+                    </IconSpace>
+                </Progress>
+                
                 <ListContainer>
                     <CostumerList
                         data={this.state.costumers}

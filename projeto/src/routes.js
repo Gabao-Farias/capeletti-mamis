@@ -15,6 +15,7 @@ import InsertAmmount from './view/NewOrder/InsertAmmount';
 import SelectSize from './view/NewOrder/Size';
 import SelectDate from './view/NewOrder/Date';
 import ReviewOrder from './view/NewOrder/ReviewOrder';
+import CreatedOrder from './view/NewOrder/CreatedOrder';
 
 const Stack = createStackNavigator();
 
@@ -31,6 +32,7 @@ export default function Routes() {
         <Stack.Screen name="InsertAmmount" component={InsertAmmount}/>
         <Stack.Screen name="SelectDate" component={SelectDate}/>
         <Stack.Screen name="ReviewOrder" component={ReviewOrder}/>
+        <Stack.Screen name="CreatedOrder" component={CreatedOrder}/>
         <Stack.Screen name="NewSpent" component={NewSpent} />
         <Stack.Screen name="NewCostumer" component={NewCostumer} />
         <Stack.Screen name="PendingOrders" component={PendingOrders} />

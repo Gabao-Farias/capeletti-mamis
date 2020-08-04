@@ -18,6 +18,17 @@ export const Title = styled.Text`
     font-size: 38px;
 `;
 
+export const Progress = styled.View`
+    margin: 10px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+`;
+
+export const IconSpace = styled.View`
+    margin: 3px;
+`;
+
 export const ShowPicker = styled.TouchableOpacity`
     align-self: center;
     align-items: center;

@@ -7,7 +7,6 @@ export const Container = styled(LinearGradient).attrs({
     end: {x: 1, y: 1},
 })`
     flex: 1;
-    justify-content: center;
 `;
 
 export const Title = styled.Text`
@@ -15,6 +14,17 @@ export const Title = styled.Text`
     margin-top: 40px;
     color: #fff;
     font-size: 38px;
+`;
+
+export const Progress = styled.View`
+    margin: 10px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+`;
+
+export const IconSpace = styled.View`
+    margin: 3px;
 `;
 
 export const AmmountInput = styled.TextInput.attrs({
@@ -26,7 +36,7 @@ export const AmmountInput = styled.TextInput.attrs({
     color: #8A0F74;
     width: 80px;
     padding: 10px;
-    margin: 10px;
+    margin: 20px;
     border-radius: 10px;
     font-size: 22px;
 `;
@@ -34,6 +44,7 @@ export const AmmountInput = styled.TextInput.attrs({
 export const Options = styled.View`
     flex-direction: row;
     margin: 20px;
+    margin-top: 360px;
     justify-content: space-around;
 `;
 
