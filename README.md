@@ -48,6 +48,7 @@ This is a pretty particular project, so it's based on the environment wich my mo
 * It can be added new orders.
 * When it's wanted to close the order, the user must declare the order's price.
     * Some of the price of the products are defined by it's weight, then, sometimes the price can result with decimals values.
+* List of delivered orders 🚧🏗️ (Working on it...)
 * Dashboard 🚧🏗️ (Working on it...)
 * Ranking of Customers 🚧🏗️ (Working on it...)
 
