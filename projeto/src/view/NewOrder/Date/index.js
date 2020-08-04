@@ -68,7 +68,7 @@ export default class SelectDate extends Component{
     render(){
         return(
             <Container>
-                <Title>Selecione a data de entrega</Title>
+                <Title>Data de entrega</Title>
 
                 <Progress>
                     <IconSpace>

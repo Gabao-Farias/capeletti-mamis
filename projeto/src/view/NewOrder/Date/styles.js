@@ -7,7 +7,6 @@ export const Container = styled(LinearGradient).attrs({
     end: {x: 1, y: 1},
 })`
     flex: 1;
-    justify-content: center;
 `;
 
 export const Title = styled.Text`
@@ -37,7 +36,7 @@ export const ShowPicker = styled.TouchableOpacity`
     background-color: #fff;
     border-radius: 10px;
     justify-content: space-between;
-    margin: 20px;
+    margin: 40px;
 `;
 
 export const PickedDate = styled.Text`
@@ -76,6 +75,7 @@ export const FlavorSelected = styled.Text`
 export const Options = styled.View`
     flex-direction: row;
     margin: 20px;
+    margin-top: 260px;
     justify-content: space-around;
 `;
 
