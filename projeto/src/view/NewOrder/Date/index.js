@@ -7,9 +7,14 @@ import PT_BR from 'date-fns/locale/pt-BR';
 
 import Icon from 'react-native-vector-icons/AntDesign';
 
+import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
+import AntIcon from 'react-native-vector-icons/AntDesign';
+
 import {
     Container,
     Title,
+    Progress,
+    IconSpace,
     ShowPicker,
     PickedDate,
     Options,
@@ -54,22 +59,52 @@ export default class SelectDate extends Component{
 
     handleDateChanged(event, date){
         if(event.type === "set"){
-            this.setState({order: {dateSelected: new Date(date)}});
             this.setState({datePicker: {show: false}});
-            console.log("Ended if -> handleDateChanged");
+            this.setState({order: {dateSelected: new Date(date)}});            
         }
         this.setState({datePicker: {show: false}});
     }
 
-    componentDidUpdate(){
-        console.log("Updated");
-    }
-
     render(){
-        console.log("Rendered");
         return(
             <Container>
                 <Title>Selecione a data de entrega</Title>
+
+                <Progress>
+                    <IconSpace>
+                        <AntIcon name="user" size={20} color="#fff" />
+                    </IconSpace>
+                    <IconSpace>
+                        <AntIcon name="arrowright" size={20} color="#fff" />
+                    </IconSpace>
+                    <IconSpace>
+                        <MaterialCommunityIcon name="pasta" size={20} color="#fff" />
+                    </IconSpace>
+                    <IconSpace>
+                        <AntIcon name="arrowright" size={20} color="#fff" />
+                    </IconSpace>
+                    <IconSpace>
+                        <MaterialCommunityIcon name="food-steak" size={20} color="#fff" />
+                    </IconSpace>
+                    <IconSpace>
+                        <AntIcon name="arrowright" size={20} color="#fff" />
+                    </IconSpace>
+                    <IconSpace>
+                        <MaterialCommunityIcon name="weight" size={20} color="#fff" />
+                    </IconSpace>
+                    <IconSpace>
+                        <AntIcon name="arrowright" size={20} color="#fff" />
+                    </IconSpace>
+                    <IconSpace>
+                        <MaterialCommunityIcon name="stack-overflow" size={20} color="#fff" />
+                    </IconSpace>
+                    <IconSpace>
+                        <AntIcon name="arrowright" size={20} color="#fff" />
+                    </IconSpace>
+                    <IconSpace>
+                        <AntIcon name="calendar" size={30} color="#fff" />
+                    </IconSpace>
+                </Progress>
 
                 <ShowPicker onPress={() => {this.showDatePicker()}}>
                     <Icon name={"calendar"} size={36} color={"#8a0f74"} />

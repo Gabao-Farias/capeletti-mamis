@@ -47,7 +47,6 @@ export default class ReviewOrder extends Component{
             const objects = realm.objects('Order');
 
             this.setState({id: Number(getNewID(objects))});
-            console.log("(defineNewID) -> ID da Order:" + this.state.id);
         }catch(err){
             Alert.alert("Erro", "Problema ao gerar ID do pedido");
             console.log(err);
@@ -62,8 +61,6 @@ export default class ReviewOrder extends Component{
 
             let a = Array.from(objects);    //Remember that realm returns Proxy objects!
 
-            console.log(a[0].costumerID);
-
             this.setState({costumerID: a[0].costumerID});
         }catch(err){
             Alert.alert("Erro", "Problema ao buscar ID do cliente");
@@ -73,13 +70,13 @@ export default class ReviewOrder extends Component{
 
     async saveOrder(order){
         try{
-            const realm = await getRealm();            
+            const realm = await getRealm();
             
             realm.write(() => {
                 realm.create('Order', order);
             });
 
-            Alert.alert("Concluído!", "Pedido adicionado aos pendentes!");
+            this.props.navigation.navigate('CreatedOrder');
         }catch(err){
             this.generateAlert("Erro!", "Consultar desenvolvedor!");
             console.log("Error on saving data");
@@ -89,8 +86,6 @@ export default class ReviewOrder extends Component{
 
     handleAddOrder(){
         this.saveOrder(this.state);
-
-        this.props.navigation.navigate('Main');
     }
 
     componentDidMount(){
