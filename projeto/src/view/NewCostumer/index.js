@@ -53,17 +53,21 @@ export default class NewCostumer extends Component {
     }
 
     handleAddCostumer(){
-        if(!costumerExists(this.state.name, this.state.costumers)){
-            this.saveCostumer(this.state);
+        if(this.state.name === ""){
+            if(!costumerExists(this.state.name, this.state.costumers)){
+                this.saveCostumer(this.state);
 
-            this.setState({
-                costumerID: 0,
-                name: ''
-            });
+                this.setState({
+                    costumerID: 0,
+                    name: ''
+                });
 
-            this.defineNewID();
+                this.defineNewID();
+            }else{
+                this.generateAlert("Já existe","O nome do cliente já foi cadastrado!");
+            }
         }else{
-            this.generateAlert("Já existe","O nome do cliente já foi cadastrado!");
+            this.generateAlert("Sem nome","Insira algum nome para cadastrar!");
         }
     }
 
