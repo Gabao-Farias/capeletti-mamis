@@ -57,7 +57,7 @@ export const FlavorSelected = styled.Text`
 export const Options = styled.View`
     flex-direction: row;
     margin: 20px;
-    margin-top: 190px;
+    margin-top: 160px;
     justify-content: space-around;
 `;
 

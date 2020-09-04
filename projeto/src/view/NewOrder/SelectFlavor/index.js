@@ -82,6 +82,9 @@ export default class SelectFlavor extends Component{
                     <Flavor onPress={() => {this.setState({flavorSelected: "Bolonhesa"})}} >
                         <FlavorText>Bolonhesa</FlavorText>
                     </Flavor>
+                    <Flavor onPress={() => {this.setState({flavorSelected: "Brócolis"})}} >
+                        <FlavorText>Brócolis</FlavorText>
+                    </Flavor>
                     <Flavor onPress={() => {this.setState({flavorSelected: "Frango"})}} >
                         <FlavorText>Frango</FlavorText>
                     </Flavor>
